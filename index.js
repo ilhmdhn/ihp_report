@@ -10,6 +10,10 @@ const port = process.env.APP_PORT;
 
 const reportRoute = require('./src/router/report-route');
 
+app.listen(port, ()=>{
+    console.log(`APP LISTENING ON ${port} PORT`);
+})
+
 app.get('/', async(req, res)=>{
     try {
         await sqlz.authenticate();
