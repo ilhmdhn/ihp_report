@@ -1,5 +1,7 @@
 const ReportTable = require('../model/report');
 const response = require('../tools/response');
+const moment = require('moment')
+const {Sequelize} = require('sequelize');
 
 const insertReport = async(req, res)=>{
     try {
@@ -10,6 +12,7 @@ const insertReport = async(req, res)=>{
         const detail = req.body.detail;
 
         const searchDate = moment(new Date()).format('YYYY-MM-DD');
+        const maxDate = moment(new Date()).format('YYYY-MM-DD');
 
         const alreadyInsert = await ReportTable.findOne({
             where: {
@@ -17,7 +20,7 @@ const insertReport = async(req, res)=>{
                 apps: apps,
                 version: version,
                 detail: detail,
-                time: searchDate
+                time: Sequelize.literal(`DATE(time) = '${searchDate}'`)
             },
             raw: true
         });

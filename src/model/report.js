@@ -1,4 +1,4 @@
-const {DataTypes} = require('sequelize');
+const {DataTypes, Sequelize} = require('sequelize');
 const sqlz = require('../tools/database');
 
 module.exports = sqlz.define('Error', {
