@@ -12,7 +12,6 @@ const insertReport = async(req, res)=>{
         const detail = req.body.detail;
 
         const searchDate = moment(new Date()).format('YYYY-MM-DD');
-        const maxDate = moment(new Date()).format('YYYY-MM-DD');
 
         const alreadyInsert = await ReportTable.findOne({
             where: {
