@@ -1,4 +1,3 @@
-const { raw } = require('body-parser');
 const ReportTable = require('../model/report');
 const response = require('../tools/response');
 
@@ -41,4 +40,8 @@ const insertReport = async(req, res)=>{
         `)
         res.status(500).send(response(false, err.name));
     }
+}
+
+module.exports = {
+    insertReport
 }
